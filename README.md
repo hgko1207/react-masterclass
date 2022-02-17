@@ -17,6 +17,8 @@ npx create-react-app react-masterclass
 npm i styled-components
 ```
 
+- Styled-Component 자동 완성을 위해 `vscode-styled-components` 플러그인을 설치합니다.
+
 사용 예
 
 ```js
@@ -52,4 +54,15 @@ function App() {
 export default App;
 ```
 
-- Styled-Component 자동 완성을 위해 `vscode-styled-components` 플러그인을 설치합니다.
+컴포넌트를 확장하는 방법입니다.
+
+```js
+const Box = styled.div`
+  background-color: ${(props) => props.bgColor};
+  width: 100px;
+  height: 100px;
+`;
+const Circle = styled(Box)`
+  border-radius: 50px;
+`;
+```
