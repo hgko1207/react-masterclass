@@ -66,3 +66,28 @@ const Circle = styled(Box)`
   border-radius: 50px;
 `;
 ```
+
+### 'As' and Attrs
+
+아래와 같이 as 속성을 사용하여 값을 `a` 로 지정하면 button 태그가 a 태그로 바뀝니다.
+
+```js
+const Btn = styled.button`
+  color: white;
+  background-color: tomato;
+  border: 0;
+  border-radius: 15px;
+`;
+
+<Btn as="a">Log in</Btn>;
+```
+
+### 속성 값 설정
+
+attrs 을 사용하여 HTML 태그에 속성 값을 설정 할 수 있습니다.
+
+```js
+const Input = styled.input.attrs({ require: true, minLength: 10 })`
+  background-color: tomato;
+`;
+```
