@@ -91,3 +91,46 @@ const Input = styled.input.attrs({ require: true, minLength: 10 })`
   background-color: tomato;
 `;
 ```
+
+### Animation
+
+`keyframes` 를 추가하고, Animation 을 설정합니다. 그리고 styled components 에 `${}` 를 통해 설정된 변수를 지정합니다.
+
+```js
+import styled, { keyframes } from 'styled-components';
+
+const rotationAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    border-radius: 100px;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 0px;
+  }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const Box = styled.div`
+  height: 200px;
+  width: 200px;
+  background-color: tomato;
+  animation: ${rotationAnimation} 1s linear infinite;
+`;
+
+function App() {
+  return (
+    <Wrapper>
+      <Box />
+    </Wrapper>
+  );
+}
+
+export default App;
+```
