@@ -16,6 +16,14 @@ const rotationAnimation = keyframes`
 
 const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+`;
+
+const Emoji = styled.span`
+  font-size: 36px;
 `;
 
 const Box = styled.div`
@@ -26,14 +34,8 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   animation: ${rotationAnimation} 1s linear infinite;
-  span {
-    font-size: 36px;
-    &:hover {
-      font-size: 40px;
-    }
-    &:active {
-      opacity: 0;
-    }
+  ${Emoji}:hover {
+    font-size: 98px;
   }
 `;
 
@@ -41,8 +43,9 @@ function App() {
   return (
     <Wrapper>
       <Box>
-        <span>고</span>
+        <Emoji>고</Emoji>
       </Box>
+      <Emoji>이</Emoji>
     </Wrapper>
   );
 }
