@@ -22,30 +22,15 @@ const Wrapper = styled.div`
   width: 100vw;
 `;
 
-const Emoji = styled.span`
-  font-size: 36px;
-`;
-
-const Box = styled.div`
-  height: 200px;
-  width: 200px;
-  background-color: tomato;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: ${rotationAnimation} 1s linear infinite;
-  ${Emoji}:hover {
-    font-size: 98px;
-  }
+const Btn = styled.button`
+  color: tomato;
 `;
 
 function App() {
   return (
     <Wrapper>
-      <Box>
-        <Emoji>고</Emoji>
-      </Box>
-      <Emoji>이</Emoji>
+      <Btn>Log in</Btn>
+      <Btn as="a">Go home</Btn>
     </Wrapper>
   );
 }
