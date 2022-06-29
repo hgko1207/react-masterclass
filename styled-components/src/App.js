@@ -14,12 +14,17 @@ const rotationAnimation = keyframes`
   }
 `;
 
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const Btn = styled.button`
@@ -29,8 +34,7 @@ const Btn = styled.button`
 function App() {
   return (
     <Wrapper>
-      <Btn>Log in</Btn>
-      <Btn as="a">Go home</Btn>
+      <Title>Hello</Title>
     </Wrapper>
   );
 }

@@ -136,3 +136,60 @@ export default App;
 ```
 
 ### Theme
+
+**index.js** 파일에서 `ThemeProvider`를 styled-components 로 부터 Import 한 후 `App` 태그를 감쌉니다. Theme에 어떤 색을 사용할 건지 설정합니다.
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
+import App from './App';
+
+const darkTheme = {
+  textColor: 'whitesmoke',
+  backgroundColor: '#111',
+};
+
+const lightTheme = {
+  textColor: '#111',
+  backgroundColor: 'whitesmoke',
+};
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider theme={darkTheme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+위에서 설정한 Theme 변수를 사용합니다. Theme가 변경되면 `Title` 이나 `Wrapper` 안의 글자 색상과 배경색이 변화되는 것을 확인 할 수 있습니다.
+
+```js
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+function App() {
+  return (
+    <Wrapper>
+      <Title>Hello</Title>
+    </Wrapper>
+  );
+}
+
+export default App;
+```
