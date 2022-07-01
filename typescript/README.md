@@ -1,5 +1,7 @@
 # TypeScript
 
+TypeScript를 사용하는 이유는 코드가 실행되기 전에 오류를 확인하기 위해서입니다.
+
 ## 설치
 
 - https://create-react-app.dev/docs/adding-typescript/
@@ -22,16 +24,11 @@ typescript 사용 시 styled-components 부분에서 에러가 날 경우 아래
 npm i --save-dev @types/styled-components
 ```
 
-## 사용
+## Typing the Props
 
-Prop Types 는 브라우저의 콘솔에 경고표시를 해준다.
-Prop Types 는 prop이 거기에 있는지 없는지 확인해주지만 코드를 실행한 후 에만 확인이 가능하다.
+Prop Types는 코드를 실행한 후 에만 브라우저의 콘솔에 경고표시로 확인이 가능합니다. TypeScript를 사용하는 이유는 코드가 실행되기 전에 오류를 확인하기 위해서입니다.
 
-TypeScript 를 사용하는 이유는 코드가 실행되지 전에 오류를 확인하기 위해서입니다.
-interface 를 사용하여 TypeScript 에게 object shape 을 설명해줍니다.
-
-어떻게 우리 자신과 props 를 interface 를 사용하여 보호하는지
-interface 는 object의 shape을 설명해준다.
+`interface`는 일반적으로 타입 체크를 위해 사용되며 변수, 함수, 클래스에 사용할 수 있다.
 
 ```js
 import Circle from './Circle';
@@ -51,15 +48,11 @@ export default App;
 ```js
 import styled from 'styled-components';
 
-interface ContainerProps {
-  bgColor: string;
-}
-
-const Container = styled.div < ContainerProps > ``;
-
 interface CircleProps {
   bgColor: string;
 }
+
+const Container = styled.div < CircleProps > ``;
 
 function Circle({ bgColor }: CircleProps) {
   return <Container bgColor={bgColor} />;
