@@ -30,7 +30,7 @@ Prop Types는 코드를 실행한 후 에만 브라우저의 콘솔에 경고표
 
 `interface`는 일반적으로 타입 체크를 위해 사용되며 변수, 함수, 클래스에 사용할 수 있다.
 
-```js
+```ts
 import Circle from './Circle';
 
 function App() {
@@ -45,17 +45,59 @@ function App() {
 export default App;
 ```
 
-```js
+```ts
 import styled from 'styled-components';
 
 interface CircleProps {
   bgColor: string;
 }
 
-const Container = styled.div < CircleProps > ``;
+const Container = styled.div<CircleProps>`
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  background-color: ${(props) => props.bgColor};
+`;
 
 function Circle({ bgColor }: CircleProps) {
   return <Container bgColor={bgColor} />;
+}
+
+export default Circle;
+```
+
+## Optional Props
+
+props는 기본으로 required 이지만 `interface`의 object 뒤에 **?**를 추가하여 optional 될 수 있도록 변경 가능합니다.
+
+```ts
+import styled from 'styled-components';
+
+interface ContainerProps {
+  bgColor: string;
+  borderColor: string;
+}
+
+const Container = styled.div<ContainerProps>`
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  background-color: ${(props) => props.bgColor};
+  border: 1px solid ${(props) => props.borderColor};
+`;
+
+interface CircleProps {
+  bgColor: string;
+  borderColor?: string; // object뒤에 ?를 추가 => Option props
+  text?: string;
+}
+
+function Circle({ bgColor, borderColor, text = 'default text' }: CircleProps) {
+  return (
+    <Container bgColor={bgColor} borderColor={borderColor ?? 'white'}>
+      {text}
+    </Container>
+  );
 }
 
 export default Circle;
