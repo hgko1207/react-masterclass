@@ -6,7 +6,7 @@ TypeScript를 사용하는 이유는 코드가 실행되기 전에 오류를 확
 
 - https://create-react-app.dev/docs/adding-typescript/
 
-`create-react-app` 명령어에 typescript를 추가합니다.
+`create-react-app` 명령어에 typescript 옵션을 추가합니다.
 
 ```bash
 npx create-react-app typescript --template typescript
@@ -30,7 +30,7 @@ Prop Types는 코드를 실행한 후 에만 브라우저의 콘솔에 경고표
 
 `interface`는 일반적으로 타입 체크를 위해 사용되며 변수, 함수, 클래스에 사용할 수 있다.
 
-```ts
+```js
 import Circle from './Circle';
 
 function App() {
@@ -68,7 +68,7 @@ export default Circle;
 
 ## Optional Props
 
-props는 기본으로 required 이지만 `interface`의 object 뒤에 **?**를 추가하여 optional 될 수 있도록 변경 가능합니다.
+props는 기본으로 required 이지만 `interface`의 object 뒤에 `?`를 추가하여 optional 될 수 있도록 변경 가능합니다.
 
 ```ts
 import styled from 'styled-components';
