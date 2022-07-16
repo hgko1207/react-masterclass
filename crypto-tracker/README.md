@@ -78,3 +78,13 @@ export default App;
 색상 정의합니다.
 
 - https://flatuicolors.com/palette/gb
+
+## 코인 정보 조회
+
+- https://api.coinpaprika.com/
+- https://api.coinpaprika.com/v1/coins
+- https://coinpaprika.com/ko/
+
+코인 이미지 불러오기
+
+- https://coinicons-api.vercel.app/api/icon/btc
