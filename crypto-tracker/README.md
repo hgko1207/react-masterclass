@@ -44,10 +44,6 @@ react-router-dom이 버전 6로 업그레이드되면서, Switch를 더이상 �
 
 - https://github.com/zacanger/styled-reset/blob/master/src/index.ts
 
-```ts
-
-```
-
 폰트 설정을 가져와 적용합니다.
 
 - https://fonts.google.com/specimen/Source+Sans+Pro?query=Source+Sans
@@ -119,4 +115,17 @@ useEffect(() => {
 ```ts
 const priceData = await(await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json();
 console.log(priceData);
+```
+
+## 기타
+
+```js
+// 코인 정보들
+let temp1 = {...};
+
+// 배열 객체 키만 조회
+Object.keys(temp1).join();
+
+// 배열 객체 값의 타입만 조회
+Object.values(temp1).map((v) => typeof v).join();
 ```
