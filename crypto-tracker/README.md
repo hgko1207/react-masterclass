@@ -88,3 +88,35 @@ export default App;
 코인 이미지 불러오기
 
 - https://coinicons-api.vercel.app/api/icon/btc
+
+## 코인 리스트 조회
+
+```ts
+useEffect(() => {
+  (async () => {
+    const response = await fetch('https://api.coinpaprika.com/v1/coins');
+    const json = await response.json();
+    setCoins(json.slice(0, 100));
+    setLoading(false);
+  })();
+}, []);
+```
+
+더 간편하게 변경
+
+```ts
+useEffect(() => {
+  (async () => {
+    const response = await (await fetch('https://api.coinpaprika.com/v1/coins')).json();
+    setCoins(json.slice(0, 100));
+    setLoading(false);
+  })();
+}, []);
+```
+
+## 코인 가격 정보 조회
+
+```ts
+const priceData = await(await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json();
+console.log(priceData);
+```
