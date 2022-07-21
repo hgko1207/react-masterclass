@@ -117,6 +117,50 @@ const priceData = await(await fetch(`https://api.coinpaprika.com/v1/tickers/${co
 console.log(priceData);
 ```
 
+## Nested routes
+
+route안에 있는 또 다른 route 이다.
+
+React Router v6로 업그레이드 되면서 변경된 부분이 있다.
+
+```ts
+// 기존
+// Router.tsx
+<Route path="/:coinId" element={<Coin />}></Route>;
+
+// coin.tsx
+import { Switch, Route } from 'react-router';
+import Chart from './Chart';
+import Price from './Price';
+
+<Switch>
+  <Route path={`/${coinId}/price`}>
+    <Price />
+  </Route>
+  <Route path={`/${coinId}/chart`}>
+    <Chart />
+  </Route>
+</Switch>;
+```
+
+```ts
+// 변경
+// Router.tsx
+<Route path="/:coinId/*" element={<Coin />}></Route>;
+
+// coin.tsx
+import { Routes, Route } from 'react-router';
+import Chart from './Chart';
+import Price from './Price';
+
+<Routes>
+  <Route path="price" element={<Price />}></Route>
+  <Route path="chart" element={<Chart />}></Route>
+</Routes>;
+```
+
+https://ui.dev/react-router-nested-routes/
+
 ## 기타
 
 ```js
