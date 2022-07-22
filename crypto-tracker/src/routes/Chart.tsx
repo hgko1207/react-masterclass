@@ -1,7 +1,7 @@
 function Chart() {
   return (
     <div>
-      <h1>Price</h1>
+      <h1>Chart</h1>
     </div>
   );
 }

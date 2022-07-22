@@ -123,6 +123,8 @@ route안에 있는 또 다른 route 이다.
 
 React Router v6로 업그레이드 되면서 변경된 부분이 있다.
 
+- https://ui.dev/react-router-nested-routes/
+
 ```ts
 // 기존
 // Router.tsx
@@ -159,7 +161,51 @@ import Price from './Price';
 </Routes>;
 ```
 
-https://ui.dev/react-router-nested-routes/
+## useMatch
+
+useMatch는 특정한 URL에 있는지의 여부를 알려준다.
+
+```ts
+// 정의
+const priceMatch = useMatch('/:coinId/price');
+const chartMatch = useMatch('/:coinId/chart');
+
+// 사용
+const Tab = styled.span<{ isActive: boolean }>`
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px 0px;
+  border-radius: 10px;
+  color: ${(props) => (props.isActive ? props.theme.accentColor : props.theme.textColor)};
+  a {
+    display: block;
+  }
+`;
+
+<Tabs>
+  <Tab isActive={chartMatch !== null}>
+    <Link to={`/${coinId}/chart`}>Chart</Link>
+  </Tab>
+  <Tab isActive={priceMatch !== null}>
+    <Link to={`/${coinId}/price`}>Price</Link>
+  </Tab>
+</Tabs>;
+```
+
+## React Query
+
+- https://react-query-v3.tanstack.com/installation
+
+우리 스스로 실행하고 있었던 로직들을 축약해준다.
+
+```bash
+$ npm i react-query
+# or
+$ yarn add react-query
+```
 
 ## 기타
 
