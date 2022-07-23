@@ -200,6 +200,7 @@ const Tab = styled.span<{ isActive: boolean }>`
 - https://react-query-v3.tanstack.com/installation
 
 우리 스스로 실행하고 있었던 로직들을 축약해준다.
+로딩이 보이지 않은 이유는 React Query가 데이터를 캐시에 저장해두기 때문이다.
 
 ```bash
 $ npm i react-query
