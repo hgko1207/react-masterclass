@@ -220,3 +220,17 @@ Object.keys(temp1).join();
 // 배열 객체 값의 타입만 조회
 Object.values(temp1).map((v) => typeof v).join();
 ```
+
+## ApexChart
+
+- https://apexcharts.com/docs/installation/
+
+설치
+
+```bash
+npm install react-apexcharts apexcharts --save
+```
+
+```js
+import ApexCharts from 'apexcharts';
+```
