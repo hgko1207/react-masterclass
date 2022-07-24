@@ -2,7 +2,6 @@ import { useQuery } from 'react-query';
 import { useOutletContext } from 'react-router';
 import { fetchCoinHistory, fetchCoinHistory2 } from '../api';
 import ApexChart from 'react-apexcharts';
-import moment from 'moment';
 
 interface IHistorical {
   time_open: string;

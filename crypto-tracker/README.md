@@ -228,9 +228,28 @@ Object.values(temp1).map((v) => typeof v).join();
 설치
 
 ```bash
-npm install react-apexcharts apexcharts --save
+$ npm install react-apexcharts apexcharts --save
 ```
 
+사용
+
 ```js
-import ApexCharts from 'apexcharts';
+import ApexCharts from 'react-apexcharts';
+```
+
+## Helmet
+
+html의 head를 변경한다.
+
+```bash
+$ npm i react-helmet
+$ npm i --save-dev @types/react-helmet
+```
+
+```ts
+import { Helmet } from 'react-helmet';
+
+<Helmet>
+  <title>코인</title>
+</Helmet>;
 ```
