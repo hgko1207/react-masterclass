@@ -30,13 +30,54 @@ import { useForm } from 'react-hook-form';
 //   );
 // }
 
+type IForm = {
+  errors: {
+    email: {
+      message: string;
+    };
+  };
+  toDo: string;
+  email: string;
+};
+
 function ToDoList() {
-  const { register, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IForm>({
+    defaultValues: {
+      email: '@naver.com',
+    },
+  });
+  const onValid = (date: IForm) => {
+    console.log(date);
+  };
 
   return (
     <div>
-      <form>
-        <input {...register(' ')} placeholder="Write a to do" />
+      <form onSubmit={handleSubmit(onValid)}>
+        <input
+          {...register('toDo', {
+            required: true,
+            minLength: {
+              value: 5,
+              message: 'Your todo is too short.',
+            },
+          })}
+          placeholder="Write a to do"
+        />
+        <input
+          {...register('email', {
+            required: 'Email is required',
+            pattern: {
+              value: /^[A-Za-z0-9._%+-]+@naver.com$/,
+              message: 'Only naver.com emails allowed',
+            },
+          })}
+          placeholder="Email"
+        />
+        <span>{errors?.email?.message}</span>
         <button>Add</button>
       </form>
     </div>

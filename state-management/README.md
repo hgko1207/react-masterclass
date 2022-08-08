@@ -113,20 +113,18 @@ function ToDoList() {
 export default ToDoList;
 ```
 
-react-hook-form 라이브러리를 사용하면 위의 코드들을 한줄로 줄일 수 있다.
-Validation(검증)도 해준다.
+react-hook-form 라이브러리를 사용하면 위의 코드들을 한줄로 줄일 수 있다. Validation(검증)도 해준다.
 
 ```bash
 $ npm install react-hook-form
 ```
 
-`useForm`을 import 한다.
+### register
+
 `register` 함수를 사용하면 `onchange` 이벤트 핸들러와 props들, `useState`가 필요없다.
 `useForm`을 사용한 단 한줄의 코드가 onChange 이벤트와 value, useState를 모두 대체했다.
-`watch` 함수는 form의 입력값들의 변화를 관찰 할 수 있게 해준다.
 
 `register` 함수를 사용하는 것만으로도 onChange 이벤트 함수를 만들고, input에 props를 줄 수 있다.
-
 `{...register(name)}` 을 input 태크 안에 작성한다. name은 key 값이다.
 
 ```ts
@@ -134,12 +132,125 @@ $ npm install react-hook-form
 import { useForm } from 'react-hook-form';
 
 function ToDoList() {
-  const { register, watch } = useForm();
+  const { register } = useForm();
 
   return (
     <div>
       <form>
         <input {...register('toDo')} placeholder="Write a to do" />
+        <button>Add</button>
+      </form>
+    </div>
+  );
+}
+
+export default ToDoList;
+```
+
+### watch
+
+`watch` 함수는 form의 입력값들의 변화를 관찰 할 수 있게 해준다.
+
+```ts
+// TodoList.tsx
+import { useForm } from 'react-hook-form';
+
+function ToDoList() {
+  const { register, watch } = useForm();
+  console.log(watch);
+
+  return (
+    <div>
+      <form>
+        <input {...register('toDo')} placeholder="Write a to do" />
+        <button>Add</button>
+      </form>
+    </div>
+  );
+}
+
+export default ToDoList;
+```
+
+### handleSubmit
+
+`handleSubmit` 함수는 form 데이터의 validation을 해결해준다.
+`handleSubmit` 함수의 첫 번째 파라미터는 validation을 통과했을 때 호출되는 함수이고, 두 번째는 optional 이고 조건이 안맞았을 때 호출되는 함수입니다.
+`handleSubmit` 함수의 장점은 키보드랑 마우스를 조건이 유효하지 않은 항목으로 바로 focus 시켜준다.
+
+```ts
+// TodoList.tsx
+function ToDoList() {
+  const { register, handleSubmit } = useForm();
+  const onValid = (date: any) => {
+    console.log(date);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onValid)}>
+        <input
+          {...register('toDo', {
+            required: true,
+            minLength: {
+              value: 5,
+              message: 'Your todo is too short.',
+            },
+          })}
+          placeholder="Write a to do"
+        />
+        <button>Add</button>
+      </form>
+    </div>
+  );
+}
+
+export default ToDoList;
+```
+
+### formState
+
+`formState` 을 통해 에러메시지를 출력해보겠습니다.
+먼저 email은 정규식을 통해 검증하도록 pattern 을 작성하였습니다. 조건을 입력할 때 메시지를 작성하여 에러메시지가 출력되도록 합니다.
+
+```ts
+type IForm = {
+  errors: {
+    email: {
+      message: string;
+    };
+  };
+  email: string;
+};
+
+function ToDoList() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IForm>({
+    defaultValues: {
+      email: '@naver.com',
+    },
+  });
+  const onValid = (date: any) => {
+    console.log(date);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onValid)}>
+        <input
+          {...register('email', {
+            required: '이메일을 입력하세요.',
+            pattern: {
+              value: /^[A-Za-z0-9._%+-]+@naver.com$/,
+              message: '이메일 형식이 맞지 않습니다.',
+            },
+          })}
+          placeholder="Email"
+        />
+        <span>{errors?.email?.message}</span>
         <button>Add</button>
       </form>
     </div>
