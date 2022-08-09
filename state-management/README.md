@@ -182,8 +182,8 @@ export default ToDoList;
 // TodoList.tsx
 function ToDoList() {
   const { register, handleSubmit } = useForm();
-  const onValid = (date: any) => {
-    console.log(date);
+  const onValid = (data: any) => {
+    console.log(data);
   };
 
   return (
@@ -233,8 +233,8 @@ function ToDoList() {
       email: '@naver.com',
     },
   });
-  const onValid = (date: any) => {
-    console.log(date);
+  const onValid = (data: IForm) => {
+    console.log(data);
   };
 
   return (
@@ -259,3 +259,8 @@ function ToDoList() {
 
 export default ToDoList;
 ```
+
+### Custom Validation
+
+`setError` 를 통해 직접 에러를 발생시키도록 할 수 있습니다.
+`shouldFocus` 을 사용하면 form의 커서가 자동으로 옮겨집니다.
