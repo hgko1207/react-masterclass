@@ -264,3 +264,16 @@ export default ToDoList;
 
 `setError` 를 통해 직접 에러를 발생시키도록 할 수 있습니다.
 `shouldFocus` 을 사용하면 form의 커서가 자동으로 옮겨집니다.
+
+## Recoil
+
+### selector
+
+- https://recoiljs.org/docs/basic-tutorial/selectors/
+
+selector는 devived state를 나타냅니다. devived state 란 state를 입력 받아서 그걸 변형해 반환하는 순수함수를 거쳐 반환된 값을 말합니다.
+atom의 output은 한가지 형태이므로 조금 더 잘 써먹을 수 있는 형태로 변형해줍니다.
+
+## 참고
+
+- [정규식 작성](https://regex101.com/)
