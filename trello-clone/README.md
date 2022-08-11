@@ -22,3 +22,19 @@ export const hourSelector = selector<number>({
   },
 });
 ```
+
+## 칸반(Kanban)
+
+칠판에 진행상태나 사람, 업무 종류 등에 따라 칸을 나누고 각 칸에 이슈 내용이 적힌 포스트잇을 붙여 현재 업무 현황을 한눈에 파악하는 시스템이다.
+
+### Drag and Drop
+
+- [react-beautiful-dnd](https://npmjs.com/package/react-beautiful-dnd)
+
+```bash
+$ npm i react-beautiful-dnd
+
+# typescript 사용 시 추가 설치
+$ npm i --save-dev @types/react-beautiful-dnd
+```
+
