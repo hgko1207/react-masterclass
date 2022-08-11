@@ -38,3 +38,7 @@ $ npm i react-beautiful-dnd
 $ npm i --save-dev @types/react-beautiful-dnd
 ```
 
+드래그, 드롭, 애니메이션을 적용할 수 있다.
+
+draggableProps 는 어디에서든 Drag 할 수 있다.
+dragHandleProps 는 정해진 위치에서만 Drag 할 수 있도록 한다.
