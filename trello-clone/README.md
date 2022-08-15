@@ -42,3 +42,7 @@ $ npm i --save-dev @types/react-beautiful-dnd
 
 draggableProps 는 어디에서든 Drag 할 수 있다.
 dragHandleProps 는 정해진 위치에서만 Drag 할 수 있도록 한다.
+
+## memo
+
+불필요한 재렌더링이 너무 많아 최적화가 필요할 경우 사용한다.
