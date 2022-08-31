@@ -55,3 +55,7 @@ export const theme: DefaultTheme = {
   },
 };
 ```
+
+## 정보 조회
+
+- https://developers.themoviedb.org/
