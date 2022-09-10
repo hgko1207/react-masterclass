@@ -10,9 +10,7 @@ npx create-react-app nomflix-clone --template typescript
 ```bash
 # 재설치할 패키지들
 $ npm i recoil styled-components @types/styled-components react-router-dom@5.3 framer-motion react-query react-hook-form -S
-
 or
-
 $ npm i recoil styled-components @types/styled-components react-router-dom framer-motion react-query react-hook-form -S
 ```
 
@@ -56,6 +54,6 @@ export const theme: DefaultTheme = {
 };
 ```
 
-## 정보 조회
+## 영화 정보 조회
 
 - https://developers.themoviedb.org/
