@@ -63,7 +63,7 @@ const Circle = styled(motion.span)`
   position: absolute;
   width: 5px;
   height: 5px;
-  border-radius: 5px;
+  border-radius: 2.5px;
   bottom: -5px;
   left: 0;
   right: 0;
@@ -109,8 +109,8 @@ function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const homeMatch: PathMatch<string> | null = useMatch('/');
   const tvMatch = useMatch('tv');
-  const navAnimation = useAnimation();
   const inputAnimation = useAnimation();
+  const navAnimation = useAnimation();
   const { scrollY } = useScroll();
   const toggleSearch = () => {
     if (searchOpen) {
@@ -134,7 +134,7 @@ function Header() {
         navAnimation.start('top');
       }
     });
-  }, [scrollY]);
+  }, [scrollY, navAnimation]);
 
   return (
     <Nav variants={navVatiants} animate={navAnimation} initial="top">
