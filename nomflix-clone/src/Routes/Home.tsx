@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getMovies, IGetMoviesResult } from '../api';
 import { makeImagePath } from '../utils';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   background: black;
@@ -121,6 +122,7 @@ const infoVariants = {
 const offset = 6;
 
 function Home() {
+  const navigate = useNavigate();
   const { data, isLoading } = useQuery<IGetMoviesResult>(
     ['movies', 'nowPlaying'],
     getMovies
@@ -137,6 +139,9 @@ function Home() {
     }
   };
   const toggleLeaving = () => setLeaving((prev) => !prev);
+  const onBoxClicked = (movieId: number) => {
+    navigate(`/movies/${movieId}`);
+  };
   return (
     <Wrapper>
       {isLoading ? (
@@ -169,6 +174,7 @@ function Home() {
                       whileHover="hover"
                       initial="normal"
                       variants={boxVariants}
+                      onClick={() => onBoxClicked(movie.id)}
                       transition={{ type: 'tween' }}
                       bgPhoto={makeImagePath(movie.backdrop_path, 'w500')}
                     >
