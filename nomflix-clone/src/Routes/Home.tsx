@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getMovies, IGetMoviesResult } from '../api';
 import { makeImagePath } from '../utils';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useMatch, useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   background: black;
@@ -123,6 +123,7 @@ const offset = 6;
 
 function Home() {
   const navigate = useNavigate();
+  const bigMovieMatch = useMatch('/movies/:movieId');
   const { data, isLoading } = useQuery<IGetMoviesResult>(
     ['movies', 'nowPlaying'],
     getMovies
@@ -170,6 +171,7 @@ function Home() {
                   .slice(offset * index, offset * index + offset)
                   .map((movie) => (
                     <Box
+                      layoutId={movie.id + ''}
                       key={movie.id}
                       whileHover="hover"
                       initial="normal"
@@ -186,6 +188,23 @@ function Home() {
               </Row>
             </AnimatePresence>
           </Slider>
+          <AnimatePresence>
+            {bigMovieMatch ? (
+              <motion.div
+                layoutId={bigMovieMatch.params.movieId}
+                style={{
+                  position: 'absolute',
+                  width: '40vw',
+                  height: '80vh',
+                  background: 'red',
+                  top: 50,
+                  left: 0,
+                  right: 0,
+                  margin: '0 auto',
+                }}
+              />
+            ) : null}
+          </AnimatePresence>
         </>
       )}
     </Wrapper>
