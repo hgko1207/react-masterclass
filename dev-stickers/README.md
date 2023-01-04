@@ -183,10 +183,29 @@ export const Head = () => <title>Home Page</title>;
 
 - https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
 
-### Data Fetching
-
-Gatsby는 이터를 끌어와서 그 데이터로 웹사이트를 제작할 수 있습니다.
-
-#### GraphQL
+### GraphQL
 
 GraphQL은 쿼리 언어이고, 쿼리란 무언가 해달라고 부탁한다는 뜻입니다.
+
+### useStaticQuery (정적 쿼리 사용)
+
+useStaticQuery는 빌드 시 리액트 훅을 사용하여 Gatsby의 GraphQL 데이터 계층을 쿼리하는 기능을 제공합니다. 이를 통해 React 컴포넌트는 구문 분석, 평가 및 컴포넌트에 삽입될 GraphQL 쿼리를 통해 데이터를 검색할 수 있습니다.
+useStaticQuery 훅은 모든 컴포넌트 또는 페이지에서 사용할 수 있습니다.
+
+```tsx
+const data = useStaticQuery(graphql`
+  query HeaderQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`);
+```
+
+https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
+https://www.gatsbyjs.com/docs/reference/graphql-data-layer/graphql-api/#usestaticquery
+
+GraphQL Typegen
+https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/
