@@ -204,8 +204,18 @@ const data = useStaticQuery(graphql`
 `);
 ```
 
-https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
-https://www.gatsbyjs.com/docs/reference/graphql-data-layer/graphql-api/#usestaticquery
+- https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
+- https://www.gatsbyjs.com/docs/reference/graphql-data-layer/graphql-api/#usestaticquery
+- GraphQL Typegen: https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/
 
-GraphQL Typegen
-https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/
+### gatsby-source-filesystem
+
+로컬 파일 시스템에서 Gatsby 애플리케이션으로 데이터를 sourcing하기 위한 Gatsby 소스 플러그인입니다. 플러그인은 파일에서 파일 노드를 생성합니다. 다양한 "transformer" 플러그인은 파일 노드를 다양한 다른 유형의 데이터로 변환할 수 있습니다.
+
+이것을 사용하면 파일을 Gatsby가 관찰 할 수 있게 허용해줍니다.
+
+```shell
+$ npm install gatsby-source-filesystem
+```
+
+- https://www.gatsbyjs.com/plugins/gatsby-source-filesystem
